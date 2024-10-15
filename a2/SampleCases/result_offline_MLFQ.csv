@@ -1,0 +1,5 @@
+Command,Finished,Error,Burst Time,Turnaround Time,Waiting Time,Response Time
+Command,Finished,Error,Burst Time,Turnaround Time,Waiting Time,Response Time
+./galat 2,Yes,Yes,1000,500,-500,503
+./dummy_p 1,Yes,No,2000,2501,501,1003
+./dummy_p 3,Yes,No,4000,5503,1503,2

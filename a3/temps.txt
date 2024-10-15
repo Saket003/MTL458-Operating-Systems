@@ -1,0 +1,58 @@
+#include <unordered_map>
+#include <cstring>
+
+const int ARRAY_SIZE = 5;  // Fixed size for each array, change as needed
+
+class IntToArrayMap {
+private:
+    std::unordered_map<int, int[ARRAY_SIZE]> map;
+
+public:
+    void setArray(int key, const int* values) {
+        std::memcpy(map[key], values, ARRAY_SIZE * sizeof(int));
+    }
+
+    bool hasKey(int key) const {
+        return map.find(key) != map.end();
+    }
+
+    const int* getArray(int key) const {
+        auto it = map.find(key);
+        if (it != map.end()) {
+            return it->second;
+        }
+        return nullptr;
+    }
+
+    void updateElement(int key, int index, int value) {
+        if (hasKey(key) && index >= 0 && index < ARRAY_SIZE) {
+            map[key][index] = value;
+        }
+    }
+};
+
+// Example usage
+int main() {
+    IntToArrayMap myMap;
+
+    // Adding arrays
+    int arr1[] = {1, 2, 3, 4, 5};
+    myMap.setArray(1, arr1);
+
+    int arr2[] = {10, 20, 30, 40, 50};
+    myMap.setArray(2, arr2);
+
+    // Checking if a key exists and accessing the array
+    if (myMap.hasKey(1)) {
+        const int* arr = myMap.getArray(1);
+        // Use the array...
+        for (int i = 0; i < ARRAY_SIZE; i++) {
+            // Print or process arr[i]
+        }
+    }
+
+    // Updating a single element
+    myMap.updateElement(2, 2, 35);  // Changes the third element of the array for key 2 to 35
+
+    return 0;
+}

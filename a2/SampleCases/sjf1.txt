@@ -1,0 +1,6 @@
+./dummy_p 1
+./dummy_p 3
+./dummy_p 3
+./dummy_p 1
+./dummy_p 2
+
